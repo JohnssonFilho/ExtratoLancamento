@@ -19,16 +19,13 @@ import br.com.gft.extrato.model.TotalControleLancamento;
 public class TotalControleLancamentoService  {
 	
 	String arquivoBase = "lancamento-conta-legado.json";
-	List<TotalControleLancamento> lt = null;
 
 	public List<TotalControleLancamento> listar() throws JsonParseException, JsonMappingException, FileNotFoundException, IOException {
-		
-		lt = new 	ArrayList<TotalControleLancamento>();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<?, ?> empMap = objectMapper.readValue(new FileInputStream(arquivoBase), Map.class);
 
-		lt = new ArrayList(empMap.values());
+		List<TotalControleLancamento> lt = new ArrayList(empMap.values());
 		
 		return lt;
 	}
