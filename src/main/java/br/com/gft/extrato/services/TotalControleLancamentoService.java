@@ -13,19 +13,19 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.gft.extrato.model.TotalControleLancamento;
-
 @Service
 public class TotalControleLancamentoService  {
 	
 	String arquivoBase = "lancamento-conta-legado.json";
 
-	public List<TotalControleLancamento> listar() throws JsonParseException, JsonMappingException, FileNotFoundException, IOException {
+	public List<Object> listar() throws JsonParseException, JsonMappingException, FileNotFoundException, IOException {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<?, ?> empMap = objectMapper.readValue(new FileInputStream(arquivoBase), Map.class);
 
-		List<TotalControleLancamento> lt = new ArrayList(empMap.values());
+		List<Object> lt = new ArrayList<Object>(empMap.values());
+		
+		System.out.println(lt);
 		
 		return lt;
 	}

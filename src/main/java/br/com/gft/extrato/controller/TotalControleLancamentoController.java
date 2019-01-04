@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.gft.extrato.model.TotalControleLancamento;
 import br.com.gft.extrato.services.TotalControleLancamentoService;
 
 @RestController
@@ -21,8 +20,8 @@ public class TotalControleLancamentoController {
 	private TotalControleLancamentoService extratoService;
 
 	@GetMapping
-	public ResponseEntity<List<TotalControleLancamento>> listar() throws IOException {
-		List<TotalControleLancamento> extrato = extratoService.listar();
+	public ResponseEntity<List<Object>> listar() throws IOException {
+		List<Object> extrato = extratoService.listar();
 		return ResponseEntity.status(HttpStatus.OK).body(extrato);
 	}
 
